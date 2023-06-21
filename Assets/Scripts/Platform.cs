@@ -10,6 +10,8 @@ public class Platform : MonoBehaviour
     bool move = true;
     float initPos;
 
+    float min, max;
+
     public bool Move
     {
         get
@@ -27,6 +29,18 @@ public class Platform : MonoBehaviour
         polygonCollider2D = GetComponent<PolygonCollider2D>();
         randomSpeed = Random.Range(0.5f, 1.0f);
         initPos = transform.position.x;
+
+        float objectWidth = polygonCollider2D.bounds.size.x / 2;
+        if (transform.position.x > 0)
+        {
+            min = objectWidth;
+            max = ScreenCalculator.instance.Width - initPos;
+        }
+        else
+        {
+            min = initPos;
+            max = -objectWidth;
+        }
     }
 
     // Update is called once per frame
@@ -34,8 +48,8 @@ public class Platform : MonoBehaviour
     {
         if (move)
         {
-            float pingPongX = Mathf.PingPong(Time.time * randomSpeed, 3.0f);
-            Vector2 pingPong = new Vector2(initPos + pingPongX, transform.position.y);
+            float pingPongX = Mathf.PingPong(Time.time * randomSpeed, max - min) + initPos;
+            Vector2 pingPong = new Vector2(pingPongX, transform.position.y);
             transform.position = pingPong;
         }
     }
