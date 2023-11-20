@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Legs
+  - Score
+  - Platform
+  - DeadlyPlatform
+  - Death
   layers:
   - Default
   - TransparentFX
@@ -41,9 +46,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 3235444283
+    locked: 0
+  - name: Planet
+    uniqueID: 1260204951
+    locked: 0
   - name: Platform
     uniqueID: 1011580959
     locked: 0
+  - name: Gold
+    uniqueID: 2000775153
+    locked: 0
   - name: Player
     uniqueID: 2442021149
+    locked: 0
+  - name: UI
+    uniqueID: 2039148425
     locked: 0
